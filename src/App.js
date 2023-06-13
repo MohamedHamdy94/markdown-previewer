@@ -30,10 +30,11 @@ const App = () => {
     setActiveButton(buttonName);
     docs < 1 &&
       axios
-        .get('http://www.markdownguide.org/api/v1/basic-syntax.json')
+        .get('https://www.markdownguide.org/api/v1/basic-syntax.json')
         .then((res) => {
-          console.log('success');
-          setDocs(res);
+          const resData = res.data.basic_syntax;
+          console.log(resData);
+          setDocs(resData);
         })
         .catch((err) => {
           setDocs(data.basic_syntax);
@@ -100,7 +101,7 @@ const App = () => {
           </div>
         ) : (
           <div>
-            <textarea value={compiled} readOnly/>
+            <textarea value={compiled} readOnly />
           </div>
         )}
       </div>
